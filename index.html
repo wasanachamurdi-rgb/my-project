@@ -2208,5 +2208,16 @@ document.addEventListener('change', (e)=>{
 render();
 loadPersisted();
 </script>
+async function askGemini(prompt) {
+  const res = await fetch("https://cool-math-b5a8.wasanachamurdidissanayakad69.workers.dev/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error?.message || "Request failed");
+  return data.candidates[0].content.parts[0].text;
+}
+</script>                                                                                                                                                          
 </body>
 </html>
